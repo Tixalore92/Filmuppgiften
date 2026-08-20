@@ -43,7 +43,7 @@ document.getElementById("randomButton").addEventListener("click", function() {
     const randomMovie = movies[randomIndex];
 
     // Visa resultatet i ul-listan med id="movieList"
-    const resultDiv = document.getElementById("moviList");
+    const resultDiv = document.getElementById("movieList");
     resultDiv.textContent = `Slumpad film: ${randomMovie.title} - Röster: ${randomMovie.voting} - Sett: ${randomMovie.watched ? "Ja" : "Nej"}`;
 });
 
