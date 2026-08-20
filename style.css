@@ -1,0 +1,41 @@
+ h1 {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#addMovieButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#randomButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#movieInput {
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+    margin-right: 10px;
+}
+
+#movieList {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+    font-size: 22px;
+}
+
+#result {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
