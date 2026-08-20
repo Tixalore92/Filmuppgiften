@@ -1,12 +1,7 @@
 
-let movies = [
-    {id: 1, title: "The Shawshank Redemption", voting: 0, watched: false},
-    {id: 2, title: "The Godfather", voting: 0, watched: false},
-    {id: 3, title: "The Dark Knight", voting: 0, watched: false}
-];
-console.log(movies);
+let movies = [];
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     renderMovieList();
 });
 
@@ -18,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function renderMovieList() {
     const movieList = document.getElementById("movieList");
     movieList.innerHTML = "";
-    
+
     /* const movies = JSON.parse(localStorage.getItem("movies")) || []; */
 
     movies.forEach(movies => {
@@ -29,6 +24,33 @@ function renderMovieList() {
         movieList.appendChild(li);
     });
 }
+
+const movieInput = document.getElementById("movieInput");
+const addMovieButton = document.getElementById("addMovieButton");
+
+addMovieButton.addEventListener("click", function () {
+
+    const newTitle = movieInput.value;
+
+    if (newTitle !== "") {
+
+        const newMovie = {
+            id: movies.length + 1,
+            title: newTitle,
+            voting: 0,
+            watched: false
+        };
+
+        movies.push(newMovie);
+
+        console.log("Ny film tillagd:", newMovie);
+        console.log("Aktuell filmlista:", movies);
+
+        renderMovieList();
+
+        movieInput.value = "";
+    }
+});
 
 // Sebbe kod *******************************************
 document.getElementById("randomButton").addEventListener("click", function() {
