@@ -51,3 +51,22 @@ addMovieButton.addEventListener("click", function () {
         movieInput.value = "";
     }
 });
+
+// Sebbe kod *******************************************
+document.getElementById("randomButton").addEventListener("click", function() {
+    // Kontrollera om listan är tom
+    if (movies.length === 0) {
+        document.getElementById("result").textContent = "Inga filmer finns att slumpa bland!";
+        return;
+    }
+
+    // Slumpa ett index mellan 0 och movies.length - 1
+    const randomIndex = Math.floor(Math.random() * movies.length);
+    const randomMovie = movies[randomIndex];
+
+    // Visa resultatet i ul-listan med id="movieList"
+    const resultDiv = document.getElementById("movieList");
+    resultDiv.textContent = `Slumpad film: ${randomMovie.title} - Röster: ${randomMovie.voting} - Sett: ${randomMovie.watched ? "Ja" : "Nej"}`;
+});
+
+//Slut Sebbekod***********************************************
