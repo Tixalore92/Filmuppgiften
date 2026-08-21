@@ -64,11 +64,33 @@ h1 {
     margin-right: 10px;
 }
 
-#movieList {
+/* #movieList {
     border-right: 2px solid #030101;
     padding: 10px;
     margin: 20px 0;
     font-size: 22px;
+} */
+
+table {
+    width: 100%;
+    max-width: 600px;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid #030101;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #798dd1;
+    color: #ffffff;
 }
 
 #favoriteResult {

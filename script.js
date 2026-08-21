@@ -14,56 +14,68 @@ function renderMovieList(movieId = null) {
     const movieList = document.getElementById("movieList");
     movieList.innerHTML = "";
 
-    /* const movies = JSON.parse(localStorage.getItem("movies")) || []; */
-
     movies.forEach((movie, index) => {
 
-        // Om movieId är angivet och filmen inte har rätt ID, hoppa över den
         if (movieId !== null && index !== movieId) {
-            return; // Ignorera den aktuella filmen i listan om den inte matchar det inkommande movieId
+            return; 
         }
 
-        const li = document.createElement("li");
+        const tr = document.createElement("tr");
 
-        /* Skapar textinnehåll för varje film i listan */
-        li.textContent = movie.title + " - Röster: " + movie.voting + " - Sett: " + (movie.watched ? "Ja" : "Nej");
+        /* const li = document.createElement("li");
+        li.textContent = movie.title + " - Röster: " + movie.voting + " - Sett: " + (movie.watched ? "Ja" : "Nej"); */
 
-        /* Skapar knapp för att rösta på filmen */
+        const titleTd = document.createElement("td");
+        titleTd.textContent = movie.title;
 
-        voteButton = document.createElement("button");
+        const votingTd = document.createElement("td");
+        votingTd.textContent = movie.voting + " ";
+        
+        const voteButton = document.createElement("button");
         voteButton.textContent = "👍";
         voteButton.addEventListener("click", function () {
             movie.voting++;
             console.log("Röst tillagd för film:", movie.title);
-            renderMovieList(movieId); // 
+            renderMovieList(movieId); 
         });
+        votingTd.appendChild(voteButton);
 
-        watchedButton = document.createElement("button");
+        const watchedTd = document.createElement("td");
+        watchedTd.textContent = (movie.watched ? "Ja " : "Nej ");
+        
+        const watchedButton = document.createElement("button");
         watchedButton.textContent = "👁️";
         watchedButton.addEventListener("click", function () {
-
-            // Markera filmen som sedd eller osedd
-            movie.watched = !movie.watched; // Toggle watched status
+            movie.watched = !movie.watched; 
             renderMovieList(movieId);
         });
+        watchedTd.appendChild(watchedButton);
 
-        deleteButton = document.createElement("button");
+        const deleteTd = document.createElement("td");
+        const deleteButton = document.createElement("button");
         deleteButton.textContent = "❌";
         deleteButton.addEventListener("click", function () {
-
-            // Ta bort filmen från arrayen
             movies.splice(index, 1);
             renderMovieList(movieId);
         });
+        deleteTd.appendChild(deleteButton);
 
-        /* Lägger till objekten i listan */
+
+        /*
         movieList.appendChild(li);
         li.appendChild(voteButton);
         li.appendChild(watchedButton);
         li.appendChild(deleteButton);
+        */
 
-
+        tr.appendChild(titleTd);
+        tr.appendChild(votingTd);
+        tr.appendChild(watchedTd);
+        tr.appendChild(deleteTd);
+        
+        movieList.appendChild(tr);
     });
+    
     console.log("Aktuell filmlista:", movies);
 }
 
