@@ -16,10 +16,10 @@ function renderMovieList(movieId = null) {
 
     /* const movies = JSON.parse(localStorage.getItem("movies")) || []; */
 
-    movies.forEach(movie => {
+    movies.forEach((movie,index) => {
 
         // Om movieId är angivet och filmen inte har rätt ID, hoppa över den
-        if (movieId !== null && movie.id !== movieId) {
+        if (movieId !== null && index !== movieId) {
             return;
         }
 
@@ -37,10 +37,22 @@ function renderMovieList(movieId = null) {
             renderMovieList(movieId); // 
         });
 
+        //Sebbe *********************************************************************************************************
+        deleteButton = document.createElement("button");
+        deleteButton.textContent = "❌";
+        deleteButton.addEventListener("click", function () {
+      
+        // Ta bort filmen från arrayen
+        movies.splice(index, 1);
+        renderMovieList(movieId); 
+
+        });
 
         /* Lägger till objekten i listan */
         movieList.appendChild(li);
         li.appendChild(voteButton);
+       
+        li.appendChild(deleteButton);
 
     });
 }
@@ -55,7 +67,7 @@ addMovieButton.addEventListener("click", function () {
     if (newTitle !== "") {
 
         const newMovie = {
-            id: movies.length,
+            id: Math.max(movies.id)+1,
             title: newTitle,
             voting: 0,
             watched: false
@@ -129,3 +141,19 @@ const showAllMovies = document.getElementById("showAllMovies");
 showAllMovies.addEventListener("click", function() {
     renderMovieList();
 });
+
+//Sebbe ************************************************************************
+/* Skapar knapp för att radera filmen *
+const deleteButton = document.createElement("buttons");
+deleteButton.textContent = "❌";
+deleteButton.addEventListener("click", function () {
+    // Hitta index för filmen som matchar ID:t
+   
+        
+        // Uppdatera listan på skärmen
+        renderMovieList();
+    }
+});
+
+// Lägg till raderingsknappen i listelementet (li)
+li.appendChild(deleteButton);*/
