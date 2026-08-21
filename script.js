@@ -122,3 +122,10 @@ favoriteButton.addEventListener("click", function() {
         favoriteResult.textContent = `Favoritfilm: ${topMovie.title} (${topMovie.voting} röster)`;
     }
 });
+
+
+
+const showAllMovies = document.getElementById("showAllMovies");
+showAllMovies.addEventListener("click", function() {
+    renderMovieList();
+});
