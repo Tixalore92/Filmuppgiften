@@ -19,9 +19,23 @@ function renderMovieList() {
     movies.forEach(movies => {
         const li = document.createElement("li");
 
+        /* Skapar textinnehåll för varje film i listan */
         li.textContent = movies.title + " - Röster: " + movies.voting + " - Sett: " + (movies.watched ? "Ja" : "Nej");
 
+        /* Skapar knapp för att rösta på filmen */
+        
+        voteButton = document.createElement("button");
+        voteButton.textContent = "👍";
+        voteButton.addEventListener("click", function () {
+            movies.voting++;
+            renderMovieList();
+        });
+    
+
+        /* Lägger till objekten i listan */
         movieList.appendChild(li);
+        li.appendChild(voteButton);
+
     });
 }
 
