@@ -10,27 +10,33 @@ document.addEventListener("DOMContentLoaded", function () {
     movieList.innerHTML = "";
 } */
 
-function renderMovieList() {
+function renderMovieList(movieId = null) {
     const movieList = document.getElementById("movieList");
     movieList.innerHTML = "";
 
     /* const movies = JSON.parse(localStorage.getItem("movies")) || []; */
 
-    movies.forEach(movies => {
+    movies.forEach(movie => {
+
+        // Om movieId är angivet och filmen inte har rätt ID, hoppa över den
+        if (movieId !== null && movie.id !== movieId) {
+            return;
+        }
+
         const li = document.createElement("li");
 
         /* Skapar textinnehåll för varje film i listan */
-        li.textContent = movies.title + " - Röster: " + movies.voting + " - Sett: " + (movies.watched ? "Ja" : "Nej");
+        li.textContent = movie.title + " - Röster: " + movie.voting + " - Sett: " + (movie.watched ? "Ja" : "Nej");
 
         /* Skapar knapp för att rösta på filmen */
-        
+
         voteButton = document.createElement("button");
         voteButton.textContent = "👍";
         voteButton.addEventListener("click", function () {
-            movies.voting++;
-            renderMovieList();
+            movie.voting++;
+            renderMovieList(movieId); // 
         });
-    
+
 
         /* Lägger till objekten i listan */
         movieList.appendChild(li);
@@ -49,7 +55,7 @@ addMovieButton.addEventListener("click", function () {
     if (newTitle !== "") {
 
         const newMovie = {
-            id: movies.length + 1,
+            id: movies.length,
             title: newTitle,
             voting: 0,
             watched: false
@@ -67,7 +73,7 @@ addMovieButton.addEventListener("click", function () {
 });
 
 // Sebbe kod *******************************************
-document.getElementById("randomButton").addEventListener("click", function() {
+document.getElementById("randomButton").addEventListener("click", function () {
     // Kontrollera om listan är tom
     if (movies.length === 0) {
         document.getElementById("result").textContent = "Inga filmer finns att slumpa bland!";
@@ -76,11 +82,17 @@ document.getElementById("randomButton").addEventListener("click", function() {
 
     // Slumpa ett index mellan 0 och movies.length - 1
     const randomIndex = Math.floor(Math.random() * movies.length);
-    const randomMovie = movies[randomIndex];
+    console.log("Slumpat index:", randomIndex);
+    renderMovieList(randomIndex); // Rendera endast den slumpade filmen
 
-    // Visa resultatet i ul-listan med id="movieList"
-    const resultDiv = document.getElementById("movieList");
-    resultDiv.textContent = `Slumpad film: ${randomMovie.title} - Röster: ${randomMovie.voting} - Sett: ${randomMovie.watched ? "Ja" : "Nej"}`;
+    /*     
+        const randomMovie = movies[randomIndex];
+    
+        // Visa resultatet i ul-listan med id="movieList"
+        const resultDiv = document.getElementById("movieList");
+        resultDiv.textContent = `Slumpad film: ${randomMovie.title} - Röster: ${randomMovie.voting} - Sett: ${randomMovie.watched ? "Ja" : "Nej"}`;
+     */
+
 });
 
 //Slut Sebbekod***********************************************
