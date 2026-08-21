@@ -20,6 +20,9 @@ h1 {
     cursor: pointer;
     font-size: 22px;
 }
+#addMovieButton:hover {
+    background-color: #b9b9e2;
+}
 
 #randomButton {
     background-color: #798dd1;
@@ -28,6 +31,20 @@ h1 {
     border-radius: 10px;
     cursor: pointer;
     font-size: 22px;
+}
+#randomButton:hover {
+    background-color: #b9b9e2;
+}
+
+#favoriteButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+#favoriteButton:hover {
+    background-color: #b9b9e2;
 }
 
 #favoriteButton {
@@ -58,4 +75,42 @@ h1 {
     font-size: 24px;
     font-weight: bold;
     margin-top: 20px;
+}
+
+#favoriteButton {
+    background-color: #798dd1;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 22px;
+}
+#favoriteButton:hover {
+    background-color: #b9b9e2;
+}
+
+#showAllMovies {
+    background-color: #798dd1;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 22px;
+}
+#showAllMovies:hover {
+    background-color: #b9b9e2;
+}
+
+/*knapp i listan för att rösta på en film*/
+Button{
+    background-color: #798dd1;
+    padding: 2px 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    
+}
+button:hover {
+    background-color: #b9b9e2;
 }
