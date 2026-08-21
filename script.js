@@ -56,7 +56,8 @@ addMovieButton.addEventListener("click", function () {
 document.getElementById("randomButton").addEventListener("click", function() {
     // Kontrollera om listan är tom
     if (movies.length === 0) {
-        document.getElementById("result").textContent = "Inga filmer finns att slumpa bland!";
+        document.getElementById("favoriteResult").textContent = "Inga filmer finns att slumpa bland!";
+
         return;
     }
 
