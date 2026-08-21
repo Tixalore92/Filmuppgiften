@@ -1,0 +1,116 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #8cd3fcb6;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color:#000000;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#addMovieButton {
+    background-color: #798dd1;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 22px;
+}
+#addMovieButton:hover {
+    background-color: #b9b9e2;
+}
+
+#randomButton {
+    background-color: #798dd1;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 22px;
+}
+#randomButton:hover {
+    background-color: #b9b9e2;
+}
+
+#favoriteButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+#favoriteButton:hover {
+    background-color: #b9b9e2;
+}
+
+#favoriteButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#movieInput {
+    border: 1px solid #030101;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 22px;
+    width: 300px;
+    margin-right: 10px;
+}
+
+#movieList {
+    border-right: 2px solid #030101;
+    padding: 10px;
+    margin: 20px 0;
+    font-size: 22px;
+}
+
+#favoriteResult {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+#favoriteButton {
+    background-color: #798dd1;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 22px;
+}
+#favoriteButton:hover {
+    background-color: #b9b9e2;
+}
+
+#showAllMovies {
+    background-color: #798dd1;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 22px;
+}
+#showAllMovies:hover {
+    background-color: #b9b9e2;
+}
+
+/*knapp i listan för att rösta på en film*/
+Button{
+    background-color: #798dd1;
+    padding: 2px 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    
+}
+button:hover {
+    background-color: #b9b9e2;
+}
