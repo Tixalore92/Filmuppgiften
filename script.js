@@ -16,11 +16,11 @@ function renderMovieList(movieId = null) {
 
     /* const movies = JSON.parse(localStorage.getItem("movies")) || []; */
 
-    movies.forEach((movie,index) => {
+    movies.forEach((movie, index) => {
 
         // Om movieId är angivet och filmen inte har rätt ID, hoppa över den
         if (movieId !== null && index !== movieId) {
-            return;
+            return; // Ignorera den aktuella filmen i listan om den inte matchar det inkommande movieId
         }
 
         const li = document.createElement("li");
@@ -34,6 +34,7 @@ function renderMovieList(movieId = null) {
         voteButton.textContent = "👍";
         voteButton.addEventListener("click", function () {
             movie.voting++;
+            console.log("Röst tillagd för film:", movie.title);
             renderMovieList(movieId); // 
         });
 
@@ -41,20 +42,22 @@ function renderMovieList(movieId = null) {
         deleteButton = document.createElement("button");
         deleteButton.textContent = "❌";
         deleteButton.addEventListener("click", function () {
-      
-        // Ta bort filmen från arrayen
-        movies.splice(index, 1);
-        renderMovieList(movieId); 
+
+            // Ta bort filmen från arrayen
+            movies.splice(index, 1);
+            renderMovieList(movieId);
 
         });
 
         /* Lägger till objekten i listan */
         movieList.appendChild(li);
         li.appendChild(voteButton);
-       
+
         li.appendChild(deleteButton);
 
+
     });
+    console.log("Aktuell filmlista:", movies);
 }
 
 const movieInput = document.getElementById("movieInput");
@@ -67,7 +70,7 @@ addMovieButton.addEventListener("click", function () {
     if (newTitle !== "") {
 
         const newMovie = {
-            id: Math.max(movies.id)+1,
+            id: Math.max(0, ...movies.map(movie => movie.id)) + 1,
             title: newTitle,
             voting: 0,
             watched: false
@@ -76,7 +79,7 @@ addMovieButton.addEventListener("click", function () {
         movies.push(newMovie);
 
         console.log("Ny film tillagd:", newMovie);
-        console.log("Aktuell filmlista:", movies);
+
 
         renderMovieList();
 
@@ -113,8 +116,8 @@ document.getElementById("randomButton").addEventListener("click", function () {
 const favoriteButton = document.getElementById("favoriteButton");
 const favoriteResult = document.getElementById("favoriteResult");
 
-favoriteButton.addEventListener("click", function() {
-    
+favoriteButton.addEventListener("click", function () {
+
     if (movies.length === 0) {
         favoriteResult.textContent = "Det finns inga filmer i listan!";
         return;
@@ -138,7 +141,7 @@ favoriteButton.addEventListener("click", function() {
 
 
 const showAllMovies = document.getElementById("showAllMovies");
-showAllMovies.addEventListener("click", function() {
+showAllMovies.addEventListener("click", function () {
     renderMovieList();
 });
 
