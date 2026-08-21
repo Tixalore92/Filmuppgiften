@@ -96,3 +96,29 @@ document.getElementById("randomButton").addEventListener("click", function () {
 });
 
 //Slut Sebbekod***********************************************
+
+
+const favoriteButton = document.getElementById("favoriteButton");
+const favoriteResult = document.getElementById("favoriteResult");
+
+favoriteButton.addEventListener("click", function() {
+    
+    if (movies.length === 0) {
+        favoriteResult.textContent = "Det finns inga filmer i listan!";
+        return;
+    }
+
+    let topMovie = movies[0];
+
+    movies.forEach(movie => {
+        if (movie.voting > topMovie.voting) {
+            topMovie = movie;
+        }
+    });
+
+    if (topMovie.voting === 0) {
+        favoriteResult.textContent = "Ingen film har fått några röster än!";
+    } else {
+        favoriteResult.textContent = `Favoritfilm: ${topMovie.title} (${topMovie.voting} röster)`;
+    }
+});
