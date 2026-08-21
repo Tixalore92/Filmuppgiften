@@ -38,7 +38,15 @@ function renderMovieList(movieId = null) {
             renderMovieList(movieId); // 
         });
 
-        //Sebbe *********************************************************************************************************
+        watchedButton = document.createElement("button");
+        watchedButton.textContent = "👁️";
+        watchedButton.addEventListener("click", function () {
+
+            // Markera filmen som sedd eller osedd
+            movie.watched = !movie.watched; // Toggle watched status
+            renderMovieList(movieId);
+        });
+
         deleteButton = document.createElement("button");
         deleteButton.textContent = "❌";
         deleteButton.addEventListener("click", function () {
@@ -46,13 +54,12 @@ function renderMovieList(movieId = null) {
             // Ta bort filmen från arrayen
             movies.splice(index, 1);
             renderMovieList(movieId);
-
         });
 
         /* Lägger till objekten i listan */
         movieList.appendChild(li);
         li.appendChild(voteButton);
-
+        li.appendChild(watchedButton);
         li.appendChild(deleteButton);
 
 
