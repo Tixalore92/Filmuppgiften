@@ -1,10 +1,5 @@
 
-let movies = [
-    { id: 1, title: "The Shawshank Redemption", voting: 0, watched: false },
-    { id: 2, title: "The Godfather", voting: 0, watched: false },
-    { id: 3, title: "The Dark Knight", voting: 0, watched: false }
-];
-console.log(movies);
+let movies = [];
 
 document.addEventListener("DOMContentLoaded", function () {
     renderMovieList();
@@ -28,12 +23,14 @@ function renderMovieList() {
         li.textContent = movies.title + " - Röster: " + movies.voting + " - Sett: " + (movies.watched ? "Ja" : "Nej");
 
         /* Skapar knapp för att rösta på filmen */
+        
         voteButton = document.createElement("button");
         voteButton.textContent = "👍";
         voteButton.addEventListener("click", function () {
             movies.voting++;
             renderMovieList();
         });
+    
 
         /* Lägger till objekten i listan */
         movieList.appendChild(li);
@@ -41,3 +38,49 @@ function renderMovieList() {
 
     });
 }
+
+const movieInput = document.getElementById("movieInput");
+const addMovieButton = document.getElementById("addMovieButton");
+
+addMovieButton.addEventListener("click", function () {
+
+    const newTitle = movieInput.value;
+
+    if (newTitle !== "") {
+
+        const newMovie = {
+            id: movies.length + 1,
+            title: newTitle,
+            voting: 0,
+            watched: false
+        };
+
+        movies.push(newMovie);
+
+        console.log("Ny film tillagd:", newMovie);
+        console.log("Aktuell filmlista:", movies);
+
+        renderMovieList();
+
+        movieInput.value = "";
+    }
+});
+
+// Sebbe kod *******************************************
+document.getElementById("randomButton").addEventListener("click", function() {
+    // Kontrollera om listan är tom
+    if (movies.length === 0) {
+        document.getElementById("result").textContent = "Inga filmer finns att slumpa bland!";
+        return;
+    }
+
+    // Slumpa ett index mellan 0 och movies.length - 1
+    const randomIndex = Math.floor(Math.random() * movies.length);
+    const randomMovie = movies[randomIndex];
+
+    // Visa resultatet i ul-listan med id="movieList"
+    const resultDiv = document.getElementById("movieList");
+    resultDiv.textContent = `Slumpad film: ${randomMovie.title} - Röster: ${randomMovie.voting} - Sett: ${randomMovie.watched ? "Ja" : "Nej"}`;
+});
+
+//Slut Sebbekod***********************************************
